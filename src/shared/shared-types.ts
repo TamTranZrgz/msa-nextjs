@@ -4,4 +4,13 @@ type NavItem = {
   fullSlug: string;
   children?: NavItem[];
 };
-export default NavItem;
+
+type SanityImage = {
+  _type: "image";
+  alt?: string;
+  asset: {
+    _ref: string;
+    _type: "reference";
+  };
+};
+export type { SanityImage, NavItem };

@@ -17,7 +17,7 @@ import {
 } from "@/components/ui/accordion";
 import { Menu, X } from "lucide-react";
 import { useScrollbarStability } from "@/lib/hooks/use-scrollbar-stability";
-import NavItem from "@/shared/shared-types";
+import { NavItem } from "@/shared/shared-types";
 import Link from "next/link";
 
 export function MobileDrawer({ links }: { links: NavItem[] }) {

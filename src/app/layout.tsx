@@ -22,6 +22,8 @@ export const metadata: Metadata = {
   description: "Mental Soul Aid",
 };
 
+export const revalidate = 60;
+
 export default async function RootLayout({
   children,
 }: Readonly<{
@@ -44,16 +46,27 @@ export default async function RootLayout({
           disableTransitionOnChange
         >
           <div className="flex flex-col min-h-screen">
+            {/* Sticky Header with max-w container inside */}
             <header className="sticky top-0 z-50 bg-background border-b">
-              <Navbar navLinks={navLinks} />
+              <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8">
+                <Navbar navLinks={navLinks} />
+              </div>
             </header>
-            <div className="pt-16 mx-auto max-w-7xl px-4 sm:px-6 md:px-8 flex-grow flex flex-col">
-              <BreadcrumbNav />
-              <main className="flex-grow">{children}</main>
-              <BreadcrumbNav />
-            </div>
-            <footer>
-              <Footer />
+
+            {/* Main Content Area - expand and take up all vertical space between the header and footer. */}
+            <main className="flex-grow">
+              <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8 flex flex-col">
+                <BreadcrumbNav />
+                {children}
+                <BreadcrumbNav />
+              </div>
+            </main>
+
+            {/* Footer with same max-w wrapper */}
+            <footer className="border-t">
+              <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8">
+                <Footer />
+              </div>
             </footer>
           </div>
         </ThemeProvider>

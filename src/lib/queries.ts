@@ -21,7 +21,87 @@ export async function getNavbarLinks() {
 }
 
 // Get info of Info Page by slug
-export const GET_INFO_PAGE_BY_SLUG = ``;
+export const GET_INFO_PAGE_BY_SLUG = `
+  *[_type == "infoPage" && fullSlug == $fullSlug][0]{
+    _id,
+    title,
+    content,
+    slug,
+    fullSlug,
+    content[] {
+    ...,
+    _type == "cta" => {
+      _type,
+      label,
+      "internalLink": internalLink->{
+        _id,
+        title,
+        slug,
+        fullSlug
+      },
+      externalUrl
+    },
+    _type == "quote" => {
+      _type,
+      quote,
+      author
+    },
+    _type == "linkObject" => {
+      _type,
+      label,
+      openInNewTab,
+      externalLink,
+      "internalLink": internalLink->{
+        _id,
+        title,
+        slug,
+        fullSlug
+      }
+    },
+    _type == "linkGroup" => {
+        _type,
+        links[] {
+          _key,
+          label,
+          openInNewTab,
+          externalLink,
+          "internalLink": internalLink->{
+            _id,
+            title,
+            slug,
+            fullSlug
+          }
+        }
+    },
+    _type == "imageWithCaption" => {
+      _type,
+      image {
+        asset->,
+        alt
+      },
+      caption
+    },
+    _type == "block" => {
+      ...,
+      markDefs[] {
+        ...,
+        _type == "linkObject" => {
+          _type,
+          label,
+          openInNewTab,
+          externalLink,
+          "internalLink": internalLink->{
+            _id,
+            title,
+            slug,
+            fullSlug
+          }
+        }
+      }
+    }
+  }
+}
+`;
 
 export async function getInfoPageBySlug(fullSlug: string) {
   return serverClient.fetch(GET_INFO_PAGE_BY_SLUG, { fullSlug });

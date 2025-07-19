@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { Menu, X, Search, ChevronDown } from "lucide-react";
 import { MobileDrawer } from "./MobileDrawer";
 import { DesktopMenu } from "./DesktopMenu";
-import NavItem from "@/shared/shared-types";
+import { NavItem } from "@/shared/shared-types";
 
 export default function Navbar({ navLinks }: { navLinks: NavItem[] }) {
   const [scrolled, setScrolled] = useState(false);
@@ -20,7 +20,7 @@ export default function Navbar({ navLinks }: { navLinks: NavItem[] }) {
 
   return (
     <div
-      className={`max-w-7xl mx-auto px-4 sm:px-6 md:px-8 transition-shadow duration-300 ${
+      className={`transition-shadow duration-300 ${
         scrolled ? "shadow-sm" : ""
       }`}
     >

@@ -1,4 +1,4 @@
-import NavItem from "@/shared/shared-types";
+import { NavItem } from "@/shared/shared-types";
 import { HoverablePopover } from "./HoverablePopover";
 
 export function DesktopMenu({ links }: { links: NavItem[] }) {
