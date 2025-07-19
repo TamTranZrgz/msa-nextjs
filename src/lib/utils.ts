@@ -38,3 +38,29 @@ export function buildFullSlug(page: PageNode): string {
 
   return "/" + slugs.join("/");
 }
+
+// Get breadcrumb info retreive from Sanity
+export function buildBreadcrumbChain(data: any) {
+  const chain = [];
+
+  if (data?.parent?.parent) {
+    chain.push({
+      title: data.parent.parent.title,
+      href: `/${data.parent.parent.slug}`,
+    });
+  }
+
+  if (data?.parent) {
+    chain.push({
+      title: data.parent.title,
+      href: `/${data.parent.slug}`,
+    });
+  }
+
+  chain.push({
+    title: data.title,
+    href: `/${data.slug}`,
+  });
+
+  return chain;
+}

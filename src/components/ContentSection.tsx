@@ -120,7 +120,9 @@ export const components: PortableTextComponents = {
   },
   block: {
     h1: ({ children }) => (
-      <h1 className="text-3xl md:text-4xl font-bold mb-6">{children}</h1>
+      <h1 className="text-3xl md:text-4xl font-bold mb-6 text-primary">
+        {children}
+      </h1>
     ),
     h2: ({ children }) => (
       <h2 className="text-2xl md:text-3xl font-semibold mb-5">{children}</h2>

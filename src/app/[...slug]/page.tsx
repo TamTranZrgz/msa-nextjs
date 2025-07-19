@@ -19,7 +19,7 @@ export default async function InfoPage({ params }: InfoPageProps) {
   // Step 1: Try to find an infoPage
   let page = await getInfoPageBySlug(fullSlug);
 
-  // console.log("Page:", page);
+  //   console.log("Page:", page);
 
   // Step 2: Fallback to aboutUsPage or DisclaimerPage for top-level slugs
   if (!page && slugArray?.length === 1) {

@@ -5,7 +5,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { getNavbarLinks } from "@/lib/queries";
-import BreadcrumbNav from "@/components/BreadcrumbNav";
+import { MainWrapper } from "@/components/MainWrapper";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -55,11 +55,7 @@ export default async function RootLayout({
 
             {/* Main Content Area - expand and take up all vertical space between the header and footer. */}
             <main className="flex-grow">
-              <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8 flex flex-col">
-                <BreadcrumbNav />
-                {children}
-                <BreadcrumbNav />
-              </div>
+              <MainWrapper>{children}</MainWrapper>
             </main>
 
             {/* Footer with same max-w wrapper */}

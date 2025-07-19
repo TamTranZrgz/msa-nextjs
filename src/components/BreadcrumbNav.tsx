@@ -1,54 +1,56 @@
+import React from "react";
 import {
   Breadcrumb,
-  BreadcrumbEllipsis,
   BreadcrumbItem,
   BreadcrumbLink,
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import Link from "next/link";
 
-export default function BreadcrumbNav() {
+type BreadcrumbNavProps = {
+  items: { title: string; href: string }[];
+};
+
+export default function BreadcrumbNav({ items }: BreadcrumbNavProps) {
+  //   console.log("items:", items);
   return (
-    <div className="py-2 sm:py-3 md:py-4 lg:py-6">
+    <div className="py-2 sm:py-3 md:py-4 lg:py-6 ">
       <Breadcrumb>
         <BreadcrumbList>
           <BreadcrumbItem>
             <BreadcrumbLink asChild>
-              <Link href="/">Home</Link>
+              <Link
+                href="/"
+                className="text-base sm:text-lg md:text-xl lg:text-2xl"
+              >
+                Trang chủ
+              </Link>
             </BreadcrumbLink>
           </BreadcrumbItem>
-          <BreadcrumbSeparator />
-          <BreadcrumbItem>
-            <DropdownMenu>
-              <DropdownMenuTrigger className="flex items-center gap-1">
-                <BreadcrumbEllipsis className="size-4" />
-                <span className="sr-only">Toggle menu</span>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="start">
-                <DropdownMenuItem>Documentation</DropdownMenuItem>
-                <DropdownMenuItem>Themes</DropdownMenuItem>
-                <DropdownMenuItem>GitHub</DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-          </BreadcrumbItem>
-          <BreadcrumbSeparator />
-          <BreadcrumbItem>
-            <BreadcrumbLink asChild>
-              <Link href="/docs/components">Components</Link>
-            </BreadcrumbLink>
-          </BreadcrumbItem>
-          <BreadcrumbSeparator />
-          <BreadcrumbItem>
-            <BreadcrumbPage>Breadcrumb</BreadcrumbPage>
-          </BreadcrumbItem>
+
+          {items.map((item, idx) => (
+            <React.Fragment key={idx}>
+              <BreadcrumbSeparator />
+              <BreadcrumbItem>
+                {idx === items.length - 1 ? (
+                  <BreadcrumbPage className="text-base sm:text-lg md:text-xl lg:text-2xl">
+                    {item.title}
+                  </BreadcrumbPage>
+                ) : (
+                  <BreadcrumbLink asChild>
+                    <Link
+                      href={item.href}
+                      className="text-base sm:text-lg md:text-xl lg:text-2xl"
+                    >
+                      {item.title}
+                    </Link>
+                  </BreadcrumbLink>
+                )}
+              </BreadcrumbItem>
+            </React.Fragment>
+          ))}
         </BreadcrumbList>
       </Breadcrumb>
     </div>

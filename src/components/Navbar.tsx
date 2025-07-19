@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { Menu, X, Search, ChevronDown } from "lucide-react";
+import { Search } from "lucide-react";
 import { MobileDrawer } from "./MobileDrawer";
 import { DesktopMenu } from "./DesktopMenu";
 import { NavItem } from "@/shared/shared-types";
@@ -26,7 +26,7 @@ export default function Navbar({ navLinks }: { navLinks: NavItem[] }) {
     >
       <nav className="flex items-center justify-between h-16">
         {/* Left: Logo */}
-        <div className="text-xl font-semibold">
+        <div className="text-xl font-semibold text-primary">
           <Link href="/">LOGO</Link>
         </div>
 

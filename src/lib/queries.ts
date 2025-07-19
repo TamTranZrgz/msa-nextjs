@@ -106,3 +106,23 @@ export const GET_INFO_PAGE_BY_SLUG = `
 export async function getInfoPageBySlug(fullSlug: string) {
   return serverClient.fetch(GET_INFO_PAGE_BY_SLUG, { fullSlug });
 }
+
+// Get info for Breadcrumb
+export const GET_BREADCRUMB_INFO = `
+  *[(_type == "infoPage" || _type == "aboutUsPage" || _type == "disclaimerPage")  && slug.current == $slug][0]{
+  title,
+  "slug": slug.current,
+  parent->{
+    title,
+    "slug": slug.current,
+    parent->{
+      title,
+      "slug": slug.current
+    }
+  }
+}
+`;
+
+export async function getBreadcrumbInfo(slug: string) {
+  return serverClient.fetch(GET_BREADCRUMB_INFO, { slug });
+}

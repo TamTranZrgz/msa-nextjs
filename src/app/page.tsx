@@ -81,7 +81,7 @@ async function getData() {
 
 export default async function Home() {
   const data = await getData();
-  console.log(data);
+  //   console.log(data);
 
   if (!data) {
     return <div>Loading...</div>;
@@ -109,7 +109,7 @@ export default async function Home() {
       />
 
       <div className="max-w-full mx-auto py-8">
-        <h1 className="text-2xl md:text-3xl font-bold">
+        <h1 className="text-2xl md:text-3xl font-bold text-primary">
           Giới Thiệu MSA (Mental Soul Aid)
         </h1>
         <ContentSection value={data.mainContent} />
