@@ -12,6 +12,9 @@ export default function Footer() {
           <Link href="/trach-nhiem" className="hover:underline">
             Trách Nhiệm
           </Link>
+          <Link href="/blog" className="hover:underline">
+            Blog
+          </Link>
         </div>
 
         {/* Right: Social Icons */}
