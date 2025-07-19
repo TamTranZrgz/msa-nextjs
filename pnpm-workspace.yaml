@@ -1,2 +1,5 @@
+packages:
+  - "." # means "this folder is the workspace root"
+
 onlyBuiltDependencies:
   - esbuild
