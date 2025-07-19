@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { Home } from "lucide-react";
 
+export const revalidate = 60;
+
 export default function NotFound() {
   return (
     <div className="flex flex-col items-center min-h-screen p-4">

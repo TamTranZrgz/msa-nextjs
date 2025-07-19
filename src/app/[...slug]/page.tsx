@@ -4,6 +4,8 @@ import { serverClient } from "@/lib/sanity";
 import { PortableText } from "@portabletext/react";
 import { notFound } from "next/navigation";
 
+export const revalidate = 60;
+
 type InfoPageProps = {
   params: Promise<{
     slug?: string[];
